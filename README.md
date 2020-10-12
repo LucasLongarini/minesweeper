@@ -1,1 +1,2 @@
-# minesweeper
+# Minesweeper
+Minesweeper game using vanilla javascript
