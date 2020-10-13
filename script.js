@@ -91,7 +91,7 @@ function generateMines(first_i, first_j) {
 document.addEventListener('contextmenu', e => e.preventDefault());
 
 let longHoldTimer;
-let touchDuration = 750;
+let touchDuration = 1000;
 
 function generateTile(i, j) {
     const tile = document.createElement("button");
@@ -121,7 +121,18 @@ function generateTile(i, j) {
             markMine(tile);
         }
     });
-
+    
+    tile.addEventListener("touchend", (e) => {
+        if (longHoldTimer) {
+            clearTimeout(longHoldTimer);
+            longHoldTimer = null;
+        }
+    });
+    tile.addEventListener("touchstart", (e) => {
+        if (!longHoldTimer) {
+            longHoldTimer = setTimeout(() => markMine(tile), touchDuration);
+        }
+    });
     tile.addEventListener("mousedown", (e) => {
         if (!longHoldTimer && e.which === 1) {
             longHoldTimer = setTimeout(() => markMine(tile), touchDuration);
