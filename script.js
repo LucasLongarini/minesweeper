@@ -86,9 +86,6 @@ function generateMines(first_i, first_j) {
             nMinesPlaced++;
         }
     }
-
-    //TODO remove
-    //showMines();
 }
 
 document.addEventListener('contextmenu', e => e.preventDefault());
