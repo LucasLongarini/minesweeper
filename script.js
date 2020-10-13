@@ -91,9 +91,7 @@ function generateMines(first_i, first_j) {
     //showMines();
 }
 
-$("body").contextmenu(function () {
-    return false;
-});
+document.addEventListener('contextmenu', e => e.preventDefault());
 
 let longHoldTimer;
 let touchDuration = 750;
